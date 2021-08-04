@@ -74,6 +74,8 @@ RUN git clone https://github.com/frontdevops/php-evil \
 2. No guarantees that any of this works anymore
 3. I will not be responsible for your code and do not guarantee
    that everything works as it should on your server.
+4. Other in [No license text](https://github.com/frontdevops/php-evil/blob/main/LICENSE)
+
 
 ## Feedback and supports
 If you have any suggestions, create a pull request.
