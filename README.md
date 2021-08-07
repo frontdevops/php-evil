@@ -63,7 +63,7 @@ RUN git clone https://github.com/frontdevops/php-evil && \
     make && make install && \
     echo "extension=evil.so" > /usr/local/etc/php/conf.d/evil.ini && \
     cd .. && \
-    rm -rf php-evi
+    rm -rf php-evil
 
 ```
 
