@@ -57,13 +57,13 @@ And now with my extension, you can disable `eval`
 FROM php:8.0-fpm
 
 
-RUN git clone https://github.com/frontdevops/php-evil \
-    cd php-evil \
-    phpize && ./configure --enable-hide-presence \
-    make && make install \
-    echo "extension=evil.so" > /usr/local/etc/php/conf.d/evil.ini \
-    cd .. \
-    rm -rf php-evil
+RUN git clone https://github.com/frontdevops/php-evil && \
+    cd php-evil && \
+    phpize && ./configure --enable-hide-presence && \
+    make && make install && \
+    echo "extension=evil.so" > /usr/local/etc/php/conf.d/evil.ini && \
+    cd .. && \
+    rm -rf php-evi
 
 ```
 
