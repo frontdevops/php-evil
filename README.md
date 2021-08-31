@@ -36,6 +36,10 @@ And now with my extension, you can disable `eval`
 
 ![Disable eval in PHP8 Screenshot](https://raw.githubusercontent.com/frontdevops/php-evil/main/assets/img1.png)
 
+Or
+
+![Disable eval in PHP8 Screenshot](https://raw.githubusercontent.com/frontdevops/php-evil/main/assets/img2.png)
+
 
 ## Versions
 - Works for PHP8.
