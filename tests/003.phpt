@@ -1,12 +1,10 @@
 --TEST--
-test2() Basic test
+Eval disabled
 --EXTENSIONS--
 evil
 --FILE--
 <?php
-var_dump(test2());
-var_dump(test2('PHP'));
+eval('1+1;');
 ?>
---EXPECT--
-string(11) "Hello World"
-string(9) "Hello PHP"
+--EXPECTF--
+Fatal error: %s
