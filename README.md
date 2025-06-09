@@ -1,5 +1,5 @@
-# Evil Eval PHP 8 
-PHP extension to disable the `eval` language construct in PHP8
+# Evil Eval PHP 8
+PHP extension to disable the `eval` language construct in PHP 8.1+
 
 ## Reasons
 I got sick of hackers and others who trying to execute different PHP shells
@@ -9,7 +9,7 @@ but I can't turn off the `eval` using standard methods.
 `Eval` function can't be disabled via the `disabled_functions` in INI setting,
 because `eval` is not a function!
 
-I haven't found Suhosin module for PHP 8.0 or any other solutions.
+I haven't found Suhosin module for PHP 8.1 or any other solutions.
 So I wrote an extension for this.
 
 ```php
@@ -42,8 +42,8 @@ Or
 
 
 ## Versions
-- Works for PHP8.
-- Tested in PHP 8.0.8 on my production server and it works well.
+- Works for PHP 8.1+.
+- Tested in PHP 8.1 on my production server and it works well.
   Possibly more versions, but I haven't explicitly tested it.
 
 
@@ -58,7 +58,7 @@ Or
 
 ## Build in Docker
 ```docker
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 
 RUN git clone https://github.com/frontdevops/php-evil && \

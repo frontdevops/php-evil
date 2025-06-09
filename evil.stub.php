@@ -2,6 +2,5 @@
 
 /** @generate-class-entries */
 
-function test1(): void {}
+// No user-facing functions are exposed by this extension
 
-function test2(string $str = ""): string {}
