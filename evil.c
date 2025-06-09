@@ -6,9 +6,11 @@
 #include "php.h"
 #include "ext/standard/info.h"
 #include "php_evil.h"
+#include "evil_arginfo.h"
 
 
-void (*zend_old_execute_ex)(zend_execute_data *execute_data);
+// - void (*zend_old_execute_ex)(zend_execute_data *execute_data);
+static void (*zend_old_execute_ex)(zend_execute_data *execute_data) = NULL;
 
 
 
@@ -43,6 +45,12 @@ PHP_MINIT_FUNCTION(evil)
 }
 
 
+PHP_MSHUTDOWN_FUNCTION(evil)
+{
+    zend_execute_ex = zend_old_execute_ex;
+    return SUCCESS;
+}
+
 
 /* {{{ PHP_MINFO_FUNCTION */
 PHP_MINFO_FUNCTION(evil)
@@ -59,13 +67,18 @@ PHP_MINFO_FUNCTION(evil)
     php_info_print_table_row(2, "Message", PHP_EVIL_MSG);
     php_info_print_table_row(2, "Version", PHP_EVIL_VERSION);
     php_info_print_table_row(2, "Support PHP ver", ">= 8.0");
-    php_info_print_table_row(2, "Tested", "PHP 8.0.8 on CentOS 7");
+    php_info_print_table_row(2, "Tested", "PHP 8.1+ on CentOS 7");
     php_info_print_table_end();
 }
 /* }}} */
 
 
-const zend_function_entry evil_functions[] = { PHP_FE_END };
+// - const zend_function_entry evil_functions[] = { PHP_FE_END };
+/* registered functions */
+static const zend_function_entry evil_functions[] = {
+    ZEND_FE_END
+};
+
 
 /* {{{ evil_module_entry */
 zend_module_entry evil_module_entry = {
@@ -73,7 +86,7 @@ zend_module_entry evil_module_entry = {
 	"evil",					/* Extension name */
 	evil_functions,				/* zend_function_entry */
 	PHP_MINIT(evil),			/* PHP_MINIT - Module initialization */
-	NULL,					/* PHP_MSHUTDOWN - Module shutdown */
+	PHP_MSHUTDOWN(evil),			/* PHP_MSHUTDOWN - Module shutdown */
 	NULL,					/* PHP_RINIT - Request initialization */
 	NULL,					/* PHP_RSHUTDOWN - Request shutdown */
 	PHP_MINFO(evil),			/* PHP_MINFO - Module info */
